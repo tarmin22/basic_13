@@ -34,7 +34,7 @@ namespace basic_13
             for (int i = 0; i <= 255; i++)
             {
                 sum += i;
-                Console.WriteLine("New number: " + i + "Sum: " + sum);
+                Console.WriteLine("New number: " + i + " Sum: " + sum);
 
             }
         }
@@ -85,11 +85,13 @@ namespace basic_13
         public static int[] OddArray()
         {
             int[] ArrOdd = new int[128];
+            int idx = 0;
             for (int i = 1; i <= 255; i++)
             {
                 if (i % 2 != 0)
                 {
-                    ArrOdd[i - 1] = i;
+                    ArrOdd[idx] = i;
+                    idx++;
                 }
             }
             LoopArray(ArrOdd);
@@ -105,7 +107,7 @@ namespace basic_13
             int count = 0;
             foreach (int i in numbers)
             {
-                if (i == y)
+                if (i > y)
                 {
                     count++;
                 }
@@ -119,7 +121,9 @@ namespace basic_13
             for (int i = 0; i < numbers.Length; i++)
             {
                 numbers[i] *= numbers[i];
+
             }
+            LoopArray(numbers);
 
         }
         // Given an integer array "numbers", say [1, 5, 10, -2], create a function that replaces any negative number with the value of 0. 
@@ -133,6 +137,7 @@ namespace basic_13
                     numbers[i] = 0;
                 }
             }
+            LoopArray(numbers);
         }
         // Given an integer array, say [1, 5, 10, -2], create a function that prints the maximum number in the array, 
         // the minimum value in the array, and the average of the values in the array.
@@ -158,7 +163,20 @@ namespace basic_13
                 sum += i;
             }
             average = sum / numbers.Length;
-            Console.WriteLine("Max: " + max + "Min: " + min + "Average: " + average);
+            Console.WriteLine("Max: " + max + " Min: " + min + " Average: " + average);
+        }
+        // Given an integer array, say [1, 5, 10, 7, -2], 
+        // Write a function that shifts each number by one to the front and adds '0' to the end. 
+        // For example, when the program is done, if the array [1, 5, 10, 7, -2] is passed to the function, 
+        // it should become [5, 10, 7, -2, 0].
+        public static void ShiftValues(int[] numbers)
+        {
+            for (int i = 0; i < numbers.Length - 1; i++)
+            {
+                numbers[i] = numbers[i + 1];
+            }
+            numbers[numbers.Length - 1] = 0;
+            LoopArray(numbers);
         }
         // Write a function that takes an integer array and returns an object array 
         // that replaces any negative number with the string 'Dojo'.
@@ -178,12 +196,19 @@ namespace basic_13
                     NewArr[i] = numbers[i];
                 }
             }
+            foreach (object j in NewArr)
+            {
+                Console.WriteLine(j);
+            }
             return NewArr;
 
         }
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] arr = { 1, 4, 1, 1, -1, 20 };
+            NumToString(arr);
+
+
         }
     }
 }
