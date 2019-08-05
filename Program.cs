@@ -285,8 +285,8 @@ namespace basic_13
         // Return a list that only includes names longer than 5 characters
         public static List<string> Names()
         {
+            int rand1 = new int();
             string store1 = "";
-            string store2 = "";
             Random rand = new Random();
             List<string> NameArray = new List<string>();
             NameArray.Add("Todd");
@@ -294,14 +294,14 @@ namespace basic_13
             NameArray.Add("Charlie");
             NameArray.Add("Geneva");
             NameArray.Add("Sydney");
-            int rand1 = rand.Next(0, 3);
-            int rand2 = rand.Next(3, 5);
-            store1 = NameArray[rand1];
-            store2 = NameArray[rand2];
-            NameArray.Remove(store1);
-            NameArray.Add(store1);
-            NameArray.Remove(store2);
-            NameArray.Add(store2);
+            for (int i = 0; i < 5; i++)
+            {
+                rand1 = rand.Next(0, 5);
+                store1 = NameArray[rand1];
+                NameArray[rand1] = NameArray[0];
+                NameArray[0] = store1;
+
+            }
             foreach (string k in NameArray)
             {
                 Console.WriteLine(k);
