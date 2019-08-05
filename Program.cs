@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace basic_13
 {
@@ -159,7 +160,27 @@ namespace basic_13
             average = sum / numbers.Length;
             Console.WriteLine("Max: " + max + "Min: " + min + "Average: " + average);
         }
+        // Write a function that takes an integer array and returns an object array 
+        // that replaces any negative number with the string 'Dojo'.
+        // For example, if array "numbers" is initially [-1, -3, 2] 
+        // your function should return an array with values ['Dojo', 'Dojo', 2].
+        public static object[] NumToString(int[] numbers)
+        {
+            object[] NewArr = new object[numbers.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] < 0)
+                {
+                    NewArr[i] = "Dojo";
+                }
+                else
+                {
+                    NewArr[i] = numbers[i];
+                }
+            }
+            return NewArr;
 
+        }
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
