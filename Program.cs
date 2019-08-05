@@ -203,6 +203,82 @@ namespace basic_13
             return NewArr;
 
         }
+        // Create a function called RandomArray() that returns an integer array.  Puzzles assignment
+        // Place 10 random integer values between 5-25 into the array
+        // Print the min and max values of the array
+        // Print the sum of all the values
+        public static int[] RandomArray()
+        {
+            Random rand = new Random();
+            int[] numbers = new int[10];
+            int max = new int();
+            int min = new int();
+            int sum = 0;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = rand.Next(5, 26);
+            }
+
+            max = numbers[0];
+            min = numbers[0];
+            foreach (int i in numbers)
+            {
+                if (max < i)
+                {
+                    max = i;
+                }
+                if (min > i)
+                {
+                    min = i;
+                }
+
+                sum += i;
+            }
+
+            Console.WriteLine("Max: " + max + " Min: " + min + " Sum: " + sum);
+            return numbers;
+        }
+        // Create a function called TossCoin() that returns a string
+        // Have the function print "Tossing a Coin!"
+        // Have the function print either "Heads" or "Tails"
+        // Finally, return the result
+        public static string TossCoin()
+        {
+            Random rand = new Random();
+            string h = "Heads";
+            string t = "Tails";
+            Console.WriteLine("Tossing a Coin!");
+            if (rand.Next(1, 3) == 1)
+            {
+                Console.WriteLine(h);
+                return h;
+            }
+            else
+            {
+                Console.WriteLine(t);
+                return t;
+            }
+        }
+        // Create another function called TossMultipleCoins(int num) that returns a Double
+        // Have the function call the tossCoin function multiple times based on num value
+        // Have the function return a Double that reflects the ratio of head toss to total toss
+        public static double TossMultipleCoins(int num)
+        {
+            string result = "";
+            double count = 0;
+            double ratio = 0;
+            for (int i = 0; i < num; i++)
+            {
+                result = TossCoin();
+                if (result == "Heads")
+                {
+                    count++;
+                }
+            }
+            ratio = count / num;
+            Console.WriteLine("Ratio of head toss to total toss = ", ratio);
+        }
+
         public static void Main(string[] args)
         {
             int[] arr = { 1, 4, 1, 1, -1, 20 };
