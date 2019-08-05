@@ -276,13 +276,52 @@ namespace basic_13
                 }
             }
             ratio = count / num;
-            Console.WriteLine("Ratio of head toss to total toss = ", ratio);
+            Console.WriteLine("Ratio of head toss to total toss = " + ratio);
+            return ratio;
         }
-
+        // Build a function Names that returns a list of strings.  In this function:
+        // Create a list with the values: Todd, Tiffany, Charlie, Geneva, Sydney
+        // Shuffle the list and print the values in the new order
+        // Return a list that only includes names longer than 5 characters
+        public static List<string> Names()
+        {
+            string store1 = "";
+            string store2 = "";
+            Random rand = new Random();
+            List<string> NameArray = new List<string>();
+            NameArray.Add("Todd");
+            NameArray.Add("Tiffany");
+            NameArray.Add("Charlie");
+            NameArray.Add("Geneva");
+            NameArray.Add("Sydney");
+            int rand1 = rand.Next(0, 3);
+            int rand2 = rand.Next(3, 5);
+            store1 = NameArray[rand1];
+            store2 = NameArray[rand2];
+            NameArray.Remove(store1);
+            NameArray.Add(store1);
+            NameArray.Remove(store2);
+            NameArray.Add(store2);
+            foreach (string k in NameArray)
+            {
+                Console.WriteLine(k);
+                if (k.Length < 5)
+                {
+                    store1 = k;
+                }
+            }
+            NameArray.Remove(store1);
+            Console.WriteLine("Print names larger than or equal 5 characters");
+            foreach (string j in NameArray)
+            {
+                Console.WriteLine(j);
+            }
+            return NameArray;
+        }
         public static void Main(string[] args)
         {
             int[] arr = { 1, 4, 1, 1, -1, 20 };
-            NumToString(arr);
+            Names();
 
 
         }
